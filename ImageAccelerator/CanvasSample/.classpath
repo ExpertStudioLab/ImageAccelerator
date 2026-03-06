@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="Libraries/components_settings.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/components_settings.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/custom_popup_menu.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/custom_popup_menu.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/file_io_data.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/file_io_data.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/graphic_tools.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/graphic_tools.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/graphics_effect.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/graphics_effect.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/icon_list.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/icon_list.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Libraries/input_list_panel.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/input_list_panel.jar"/>
+	<classpathentry kind="lib" path="Libraries/original_component.jar" sourcepath="C:/Users/SmartBrightB/Desktop/Java Training/JFrame/CanvasSample/Libraries/original_component.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
