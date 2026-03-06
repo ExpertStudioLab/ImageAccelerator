@@ -703,7 +703,9 @@ public class GlassPanel extends JPanel {
 		g.dispose();
 
 		if( this.activeShape.getType( ) == ShapeGraphics.FRONT_HAIR
-				|| this.activeShape.getType( ) == ShapeGraphics.EYE_LINE ) {
+				|| this.activeShape.getType( ) == ShapeGraphics.EYE_LINE
+				|| this.activeShape.getType( ) == ShapeGraphics.CROSS_IMAGE1
+				) {
 			AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( this.activeShape.getAngle( ) ), this.activeShape.getLocation( ).getX( ), this.activeShape.getLocation( ).getY( ) );
 			this.shapeArea = rotate.createTransformedShape( this.activeShape.getShape( ) );
 		} else {
@@ -717,7 +719,9 @@ public class GlassPanel extends JPanel {
 			this.cornerPoints = new ArrayList<>( );
 			detail = new PathDetail( this.cvs.getShapeGraphics( index ).getShape( ).getPathIterator( null ) );
 			if( this.activeShape.getType( ) == ShapeGraphics.FRONT_HAIR
-					|| this.activeShape.getType( ) == ShapeGraphics.EYE_LINE ) {
+					|| this.activeShape.getType( ) == ShapeGraphics.EYE_LINE
+					|| this.activeShape.getType( ) == ShapeGraphics.CROSS_IMAGE1
+					) {
 				AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( this.activeShape.getAngle( ) ), this.activeShape.getLocation( ).getX( ), this.activeShape.getLocation( ).getY( ) );
 				detail = new PathDetail( this.activeShape.getShape( ).getPathIterator( rotate ) );
 			}
