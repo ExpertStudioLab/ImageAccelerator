@@ -503,6 +503,7 @@ class GraphicsLabel extends JLabel implements MouseListener {
 			}
 		}
 		Sample.frame.setGlassPane( Sample.defaultGlass );
+		Sample.frame.getGlassPane( ).setVisible( false );
 		Sample.frame.revalidate( );
 		Sample.frame.repaint( );
 	}

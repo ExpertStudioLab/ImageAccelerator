@@ -233,16 +233,7 @@ public class EditCanvas extends JPanel {
 		this.glassPanel.cancelDrawing( );
 		this.parent.repaint( );
 	}
-	/*
-	public void insertShape( int index, ShapeGraphics shape ) {
-		ShapeGraphics previousShape = this.graphics.get( index );
-		shape.setName( previousShape.getName( ) );
-		shape.setRadians( previousShape.getRadians( ) );
-		shape.setOrigin( previousShape.getOrigin( ).getX( ), previousShape.getOrigin( ).getY( ) );
-		this.graphics.remove( index );
-		this.graphics.add( index, shape );
-	}
-	*/
+
 	public void insertShape( int index, Shape newShape, int type ) {
 		ShapeGraphics shapeGraphics = this.graphics.get( index );
 		shapeGraphics.setShape( newShape );
@@ -263,15 +254,7 @@ public class EditCanvas extends JPanel {
 		if( shape == null ) {
 			return - 1;
 		}
-		/*
-		for( int i = 0; i < this.graphics.size(); i++ ) {
-			if( this.graphics.get(i).getId() == shape.getId() ) {
-				return i;
-			}
-		}
-		*/
 		return this.graphics.indexOf( shape );
-
 	}
 	
 	public void setClipArea( int index ) {

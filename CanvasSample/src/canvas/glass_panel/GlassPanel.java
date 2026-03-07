@@ -308,14 +308,12 @@ public class GlassPanel extends JPanel {
 	}
 	
 	public void setClip( ShapeGraphics shapeGraphics ) {
-//		this.clipArea = shapeGraphics.getClipArea( );
 		this.clipShape = shapeGraphics;
 	}
 	public ShapeGraphics getClip( ) {
 		return this.clipShape;
 	}
 	public void removeClip( ) {
-//		this.clipArea = null;
 		this.clipShape = null;
 	}
 	
@@ -474,10 +472,7 @@ public class GlassPanel extends JPanel {
 			g2d.scale( this.rate, this.rate );
 			if( this.activeShapeStatus == GlassPanel.CONTROL_POINT ) {
 				Color defaultColor = g2d.getColor( );
-				if( this.activeShape.getType( ) == ShapeGraphics.FRONT_HAIR
-						|| this.activeShape.getType( ) == ShapeGraphics.EYE_LINE ) {
-//					AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( this.activeShape.getAngle( ) ), this.activeShape.getLocation( ).getX( ), this.activeShape.getLocation( ).getY( ) );
-//					g2d.draw( rotate.createTransformedShape( this.activeShape.getShape( ) ) );
+				if( this.activeShape.getType( ) != ShapeGraphics.NORMAL) {
 					g2d.draw( this.shapeArea );
 				} else {
 					g2d.draw( this.activeShape.getShape( ) );

@@ -106,9 +106,6 @@ public class ShapeGraphicsDTO implements Serializable {
 		}
 		result.setLocation( new Point2D.Double( dto.loc[ 0 ], dto.loc[ 1 ] ) );
 		result.setAngle( dto.deg );
-		if( dto.deg > 0.0 ) {
-//			result.setRotatedShape( dto.deg );
-		}
 		
 		return result;
 	}

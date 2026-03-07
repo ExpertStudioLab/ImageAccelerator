@@ -143,9 +143,6 @@ public class ScaleActionListener implements ActionListener {
 
 	public void setNewShape( Point2D leftTop, double width ) {
 		switch( this.type ) {
-			case ShapeGraphics.CIRCLE -> {
-				controller.cvs.insertShape( controller.list.getSelectedIndex( ), new Ellipse2D.Double( leftTop.getX( ), leftTop.getY( ), width, width ), this.type );
-			}
 			case ShapeGraphics.CROSS_IMAGE1 -> controller.cvs.insertShape( controller.list.getSelectedIndex( ), paint.CrossImage.getCrossImage1( leftTop, width ), this.type );
 			case ShapeGraphics.CIRCLE_OBJECT1 -> controller.cvs.insertShape( controller.list.getSelectedIndex( ), paint.CircleObject.drawObjectImage1( leftTop, width ), this.type );
 			case ShapeGraphics.EYE_LINE -> {

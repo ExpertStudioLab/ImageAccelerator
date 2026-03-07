@@ -225,7 +225,7 @@ public class ShapeGraphics {
 		this.path = path;
 		this.resultShape = path;
 	}
-	public void setRotatedShape( double deg ) {
+	public void setRotatedShape( double deg ) {		
 		AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( deg ), this.leftTop.getX( ), this.leftTop.getY( ) );
 		if( this.type != ShapeGraphics.NORMAL ) {
 			this.deg = deg;
@@ -235,6 +235,14 @@ public class ShapeGraphics {
 		this.resultShape = rotate.createTransformedShape( this.resultShape );
 		this.clipArea = rotate.createTransformedShape( this.clipArea );
 		this.updateClipArea( );
+	}
+	public void setDefaultAngleShape( ) {
+		AffineTransform reverse = AffineTransform.getRotateInstance( - Math.toRadians( this.deg ), this.leftTop.getX( ), this.leftTop.getY( ) );
+		if( this.type == ShapeGraphics.NORMAL ) {
+			this.path = reverse.createTransformedShape( this.path );
+		}
+		this.resultShape = reverse.createTransformedShape( this.resultShape );
+		this.clipArea = reverse.createTransformedShape( this.clipArea );
 	}
 
 	public Shape getResultShape( ) {
@@ -374,11 +382,4 @@ public class ShapeGraphics {
 			shapeGraphics.setClippedArea( this );
 		}
 	}	
-	
-	public void update( ) {
-		AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( this.deg ), this.leftTop.getX( ), this.leftTop.getY( ) );
-		this.clipArea = rotate.createTransformedShape( this.clipArea );
-		this.resultShape = rotate.createTransformedShape( this.resultShape );
-		// クリップしている図形がある場合
-	}
 }

@@ -33,6 +33,7 @@ public class RotateActionListener implements ActionListener {
 	public JOptionPane optionPane;
 	
 	public Shape originalShape;
+	public double originalAngle;
 	public double angleValue;
 	public int type;
 	public Point2D location;
@@ -69,6 +70,7 @@ public class RotateActionListener implements ActionListener {
 			outerBox.add( label );
 
 			this.angleValue = shapeGraphics.getAngle( );
+			this.originalAngle = shapeGraphics.getAngle( );
 			this.location = shapeGraphics.getLocation( );
 			AffineTransform rotate = AffineTransform.getRotateInstance( - Math.toRadians( this.angleValue ), shapeGraphics.getLocation( ).getX( ), shapeGraphics.getLocation( ).getY( ) );
 			this.originalShape = rotate.createTransformedShape( shapeGraphics.getShape( ) );
@@ -86,9 +88,12 @@ public class RotateActionListener implements ActionListener {
 				if( this.shapeGraphics.getType( ) == ShapeGraphics.EYE_LINE ) {
 					shapeGraphics.setAngle( angleValue );
 					paint.face.EyeLine.drawEyeLine( shapeGraphics,  1.0 );
+				} else if( this.type != ShapeGraphics.NORMAL ) {
+					shapeGraphics.setDefaultAngleShape( );
+					shapeGraphics.setRotatedShape( angleValue );
 				} else {
 					Shape newShape = this.getRotatedShape( originalShape.getBounds( ).getLocation( ), angleValue, originalShape );
-					controller.cvs.insertShape( controller.list.getSelectedIndex( ), newShape, ShapeGraphics.NORMAL );					
+					controller.cvs.insertShape( controller.list.getSelectedIndex( ), newShape, ShapeGraphics.NORMAL );
 				}
 				controller.cvs.repaint( );
 			} );
@@ -108,8 +113,16 @@ public class RotateActionListener implements ActionListener {
 			dialog.setVisible( true );
 
 			if( optionPane.getValue( ).equals( "取消" ) ) {
-				controller.cvs.insertShape( controller.list.getSelectedIndex( ), originalShape, type );
-				shapeGraphics.setClipArea( clip );
+				if( this.type == ShapeGraphics.EYE_LINE ) {
+					shapeGraphics.setRotatedShape( shapeGraphics.getAngle( ) - this.angleValue );
+					this.controller.cvs.insertShape( controller.list.getSelectedIndex( ), shapeGraphics.getShape( ), shapeGraphics.getParts( )[ 3 ], type );
+				} else if( this.type != ShapeGraphics.NORMAL ) {
+					this.shapeGraphics.setDefaultAngleShape( );
+					this.shapeGraphics.setRotatedShape( this.originalAngle );
+				} else {
+					shapeGraphics.setRotatedShape( shapeGraphics.getAngle( ) - this.angleValue );
+					this.controller.cvs.insertShape( controller.list.getSelectedIndex( ), shapeGraphics.getShape( ), type);
+				}
 				controller.cvs.repaint( );
 			} else {
 				this.setNewShape( this.originalShape.getBounds( ).getLocation( ) );
@@ -133,18 +146,15 @@ public class RotateActionListener implements ActionListener {
 	private void setNewShape( Point2D leftTop ) {
 		AffineTransform rotate = AffineTransform.getRotateInstance( Math.toRadians( angleValue ), leftTop.getX( ), leftTop.getY( ) );
 		this.shapeGraphics.setType( this.type );
-		this.shapeGraphics.setShape( this.originalShape );
 		switch( this.type ) {
 			case ShapeGraphics.NORMAL -> {
+				this.shapeGraphics.setShape( this.originalShape );
 				this.shapeGraphics.setAngle( 0.0 );
 				this.controller.cvs.insertShape( this.controller.list.getSelectedIndex( ), rotate.createTransformedShape( originalShape ), this.type );				
 			}
 			case ShapeGraphics.EYE_LINE -> {
 				shapeGraphics.setAngle( angleValue );
 				paint.face.EyeLine.drawEyeLine( shapeGraphics,  1.0 );
-			}
-			default -> {
-				this.shapeGraphics.setRotatedShape( angleValue );
 			}
 		}
 	}
