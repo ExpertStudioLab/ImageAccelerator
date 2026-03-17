@@ -259,11 +259,13 @@ public class ShapeGraphics {
 			this.clipArea = clip;
 		} else {
 			Area clipArea = new Area( clip );
-			clipArea.intersect( new Area( this.clippedAreaShape.getClipArea( ) ) );
+			if( this.type != ShapeGraphics.FRONT_HAIR ) {
+				clipArea.intersect( new Area( this.clippedAreaShape.getClipArea( ) ) );
+				Area resultArea = new Area( this.path );
+				resultArea.intersect( new Area( this.clippedAreaShape.getClipArea( ) ) );
+				this.resultShape = resultArea;
+			}
 			this.clipArea = clipArea;
-			Area resultArea = new Area( this.path );
-			resultArea.intersect( new Area( this.clippedAreaShape.getClipArea( ) ) );
-			this.resultShape = resultArea;
 		}
 		for( ShapeGraphics shapeGraphics : this.clippingAreaShape.toArray( ShapeGraphics[ ]::new ) ) {
 			shapeGraphics.setClippedArea( this );

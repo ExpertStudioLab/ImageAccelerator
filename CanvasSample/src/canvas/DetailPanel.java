@@ -202,9 +202,9 @@ public class DetailPanel extends JPanel {
 					coordsBlock.add( ctrlPt1Panel );
 
 					JLabel endPtXLabel = new JLabel( "X ：" );
-					CustomTextField endPtX = new CustomTextField( 75, String.valueOf( ( ( CubicCurve2D ) paths[ i ] ).getX2( ) ), CustomTextField.NUMERIC_VALUE );
+					CustomTextField endPtX = new CustomTextField( 75, String.valueOf( ( ( QuadCurve2D ) paths[ i ] ).getX2( ) ), CustomTextField.NUMERIC_VALUE );
 					JLabel endPtYLabel = new JLabel( "Y ：" );
-					CustomTextField endPtY = new CustomTextField( 75, String.valueOf( ( ( CubicCurve2D ) paths[ i ] ).getY2( ) ), CustomTextField.NUMERIC_VALUE );
+					CustomTextField endPtY = new CustomTextField( 75, String.valueOf( ( ( QuadCurve2D ) paths[ i ] ).getY2( ) ), CustomTextField.NUMERIC_VALUE );
 					endPtX.addTextChangeListener( e -> this.setPoint( Double.valueOf( endPtX.getText( ) ), Double.valueOf( endPtY.getText( ) ), cmdIndex ) );
 					endPtY.addTextChangeListener( e -> this.setPoint( Double.valueOf( endPtX.getText( ) ), Double.valueOf( endPtY.getText( ) ), cmdIndex ) );
 
